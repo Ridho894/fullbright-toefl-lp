@@ -37,3 +37,5 @@ services:
             value: daily
           - key: QUEUE_CONNECTION
             value: sync
+          - key: APP_KEY
+            generateValue: true

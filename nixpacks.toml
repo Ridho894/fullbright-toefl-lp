@@ -1,6 +1,7 @@
 [variables]
 NIXPACKS_PHP_VERSION = "8.4"
 NIXPACKS_NODE_VERSION = "22"
+NIXPACKS_PHP_EXTENSIONS = "pdo,sqlite3,pdo_sqlite,mbstring,zip,bcmath,pcntl"
 
 [phases.setup]
 nixPkgs = ["php84", "php84Packages.composer", "nodejs_22"]
@@ -14,6 +15,8 @@ cmds = [
 [phases.build]
 cmds = [
     "php -r \"file_exists('.env') || copy('.env.example', '.env');\"",
+    "mkdir -p database storage/framework/cache storage/framework/sessions storage/framework/views storage/logs bootstrap/cache",
+    "php -r \"file_exists('database/database.sqlite') || touch('database/database.sqlite');\"",
     "npm run build",
 ]
 
