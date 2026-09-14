@@ -77,7 +77,8 @@ export function initializeTheme(): void {
         return;
     }
 
-    currentAppearance = getStoredAppearance();
+    const isLanding = window.location.pathname === '/';
+    currentAppearance = isLanding ? 'light' : getStoredAppearance();
     applyTheme(currentAppearance);
 
     mediaQuery()?.addEventListener('change', handleSystemThemeChange);

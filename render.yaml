@@ -1,0 +1,39 @@
+services:
+    - type: web
+      name: fullbright-lp
+      runtime: docker
+      plan: free
+      healthCheckPath: /up
+      envVars:
+          - key: APP_ENV
+            value: production
+          - key: APP_DEBUG
+            value: false
+          - key: APP_NAME
+            value: Full Bright Indonesia
+          - key: APP_LOCALE
+            value: id
+          - key: CLIENT_ID
+            value: fullbright
+          - key: PROJECT_MODE
+            value: ctwa
+          - key: PAYMENT_MODE
+            value: none
+          - key: ANALYTICS_ENABLED
+            value: true
+          - key: WHATSAPP_NUMBER
+            value: '6281959486507'
+          - key: WHATSAPP_DEFAULT_MESSAGE
+            value: Halo Admin Full Bright Indonesia. Saya tertarik daftar kelas TOEFL Online.
+          - key: DB_CONNECTION
+            value: sqlite
+          - key: DB_DATABASE
+            value: database/database.sqlite
+          - key: SESSION_DRIVER
+            value: database
+          - key: CACHE_STORE
+            value: database
+          - key: LOG_CHANNEL
+            value: daily
+          - key: QUEUE_CONNECTION
+            value: sync

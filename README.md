@@ -1,3 +1,37 @@
+# Full Bright Indonesia — Trial Case Landing Page
+
+Landing page TOEFL Full Bright Indonesia, di-wire ke [PBM Landing Page Boilerplate](https://github.com/pbmagency/boilerplate-lp) dalam mode **CTWA**. Desain mengikuti referensi 1:1 dari file FE resmi (`LP.tsx` + `assets.zip`).
+
+| Item | Nilai |
+|---|---|
+| Mode | `PROJECT_MODE=ctwa` · `PAYMENT_MODE=none` |
+| Landing | `/` |
+| Analytics | `/admin` |
+| Admin | `admin@fullbright.id` / `Fullbright#Admin2026` |
+| WhatsApp | `6281959486507` |
+
+CTA WhatsApp, checkout eksternal, dan tombol scroll memakai `TrackedCTA`. Section penting punya `id` stabil (`hero`, `agitation`, `value`, `proof`, `lms`, `why`, `testimonials`, `pricing`, `faq`, `survey`) supaya visit, scroll, section view, intent, WhatsApp lead, dan direct checkout tercatat di dashboard.
+
+## Menjalankan secara lokal
+
+PHP 8.4+, Composer 2, Node 22.13+, dan SQLite/MySQL diperlukan. Boilerplate memakai Symfony 8 yang membutuhkan PHP 8.4.
+
+```bash
+composer install
+npm install
+cp .env.example .env   # Windows: Copy-Item .env.example .env
+php artisan pbm:provision
+composer dev
+```
+
+Buka `http://localhost:8000` untuk landing page dan `http://localhost:8000/admin` untuk dashboard.
+
+## Deploy
+
+Project ini siap di-deploy ke Railway, Render, atau host Docker lain. Gunakan `Dockerfile` / `nixpacks.toml` (PHP 8.4). Setelah container start, `php artisan pbm:provision` membuat database SQLite dan akun admin di atas. Set `APP_URL` ke domain production.
+
+---
+
 # PBM Landing Page Boilerplate
 
 Boilerplate ini adalah fondasi siap pakai untuk membuat landing page dengan Laravel, Inertia, React, analytics internal, dashboard A/B testing, dan integrasi marketing. **Boilerplate** berarti project dasar yang dapat disalin dan disesuaikan untuk klien baru tanpa membangun sistem pendukung dari awal.

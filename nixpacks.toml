@@ -1,0 +1,21 @@
+[variables]
+NIXPACKS_PHP_VERSION = "8.4"
+NIXPACKS_NODE_VERSION = "22"
+
+[phases.setup]
+nixPkgs = ["php84", "php84Packages.composer", "nodejs_22"]
+
+[phases.install]
+cmds = [
+    "composer install --no-dev --no-interaction --prefer-dist --optimize-autoloader",
+    "npm ci",
+]
+
+[phases.build]
+cmds = [
+    "php -r \"file_exists('.env') || copy('.env.example', '.env');\"",
+    "npm run build",
+]
+
+[start]
+cmd = "php artisan pbm:provision && php artisan serve --host=0.0.0.0 --port=${PORT:-8000}"
